@@ -7,7 +7,7 @@ import re
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 from flask_api import FlaskAPI
-from flask.ext.cors import CORS
+from flask_cors import CORS
 app = FlaskAPI(__name__)
 
 CORS(app)
@@ -99,9 +99,9 @@ def findFormat(text):
 def classify(text):
     import operator
     di = {
-        "bw": sim_bw(text),
-        "cvt": sim_cvt(text),
-        "tn": sim_tn(text)
+        "GRAYSCALE": sim_bw(text),
+        "CONVERT": sim_cvt(text),
+        "THUMBNAIL": sim_tn(text)
     }
 
     print (di)

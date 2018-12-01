@@ -3,13 +3,14 @@ var cl = cloudinary.Cloudinary.new( { cloud_name: "dbl7whgry"});
 
 var image = "" ;
 var intent = "";
+var data = "" ;
 
 
 window.ajaxSuccess = function () {
 	response = JSON.parse(this.responseText);
   console.log("ajaxSuccess", typeof this.responseText);
   document.getElementById('uploaded').innerHTML = ( thumbnail(response["secure_url"]));
-  document.getElementById('results').innerText = this.responseText;
+  // document.getElementById('results').innerText = this.responseText;
   image = response["public_id"];
 }
 
@@ -57,7 +58,29 @@ function message(){
   $(document).ready(function () {
   $.post("http://localhost:5000/api",toSend)
   .done(function (res) {
-    alert("herre");
     console.log(res);
+    intent = res["intent"] ;
+    data = res["data"] ;
+      console.log(intent) ;
+      console.log(data) ;
+        doRequest(data,intent) ;
   })});
+
 }
+
+function doRequest(user_data, user_intent) {
+    var toSend = {
+        "public_id": image,
+        "option" :
+    {
+        "command" : user_intent
+    }
+    } ;
+    console.log(toSend);
+        $.post("http://localhost:3000/transform",toSend)
+            .done(function (res) {
+                console.log(res);
+            });
+    }
+
+
