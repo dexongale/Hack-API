@@ -31,7 +31,7 @@ router.post("/transform", (req, res) => {
     const { public_id, command } = req.body;
     // console.log({ public_id, option });
     const url = transform(public_id, {command}, cloudinary);
-    res.send(url);
+    res.send({public_id, url});
 });
 
 module.exports = router;
