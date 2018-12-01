@@ -71,16 +71,12 @@ function message(){
 function doRequest(user_data, user_intent) {
     var toSend = {
         "public_id": image,
-        "option" :
-    {
-        "command" : user_intent
-    }
+        "command" : user_intent 
     } ;
+
     console.log(toSend);
-        $.post("http://localhost:3000/transform",toSend)
-            .done(function (res) {
-                console.log(res);
-            });
-    }
-
-
+    $.post("http://localhost:3000/transform",toSend)
+    .done(function (res) {
+      console.log(res);
+    });
+  }
