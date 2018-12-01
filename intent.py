@@ -121,6 +121,10 @@ def classify(text):
 
 from flask import escape, request, jsonify
 
+@app.route('/', methods=['GET'])
+def index():
+    return "Intent"
+
 @app.route('/api', methods=['POST'])
 def hello_http():
     text = ''
