@@ -23,13 +23,15 @@
 </head>
 
 <body>
+<br>
 <div class="container">
     <div class="row">
         <div class="col-sm-2">
         </div>
         <div class="col-sm-8">
             <div class="card">
-                <div class="card-header">Dzifa</div>
+                <div class="card-header" style="font-family: 'Courier MM Screenwriter';
+                font-size: 30px; ">Dzifa</div>
                 <div class="card-body">
                     <form action="" method="post" enctype="multipart/form-data" onsubmit="AJAXSubmit(this); return false;">
                         <input type="hidden" value="default" name="upload_preset">
@@ -43,6 +45,10 @@
                         <div id="uploaded"></div>
                         <div id="results"></div>
                     </form>
+
+                    <div id="upload_image">
+                        <img src="">
+                    </div>
                 </div>
             </div>
 
@@ -51,20 +57,20 @@
 
 
     </div>
-
-
-
-
-	<div id="upload_image">
-		<img src="">
-	</div>
-
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="message" name="input_text" id="message" >
-        <div class="input-group-append">
-            <button onclick="message()" type="button" name="send"  value="send" id="send" class="btn btn-success" type="submit">send</button>
+    <br>
+<div class="row">
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-8">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="message" name="input_text" id="message" >
+            <div class="input-group-append">
+                <button onclick="message()" type="button" name="send"  value="send" id="send" class="btn btn-success">send</button>
+            </div>
         </div>
     </div>
+</div>
+
 
 </div>
 
