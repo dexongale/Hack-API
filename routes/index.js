@@ -4,9 +4,9 @@ var router = express.Router();
 
 const cloudinary = require("cloudinary");
 cloudinary.config({
-    cloud_name: "dzifa",
-    api_key: "786312297153152",
-    api_secret: "1q-gLjj72BTH9MHz-lkcWXqa74s"
+    cloud_name: "dbl7whgry",
+    api_key: "234917719617762",
+    api_secret: "FBrkoNhWu1Xc3CkjxKtVPOIBcUI"
 });
 
 const transform = require("../utils");

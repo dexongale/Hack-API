@@ -7,8 +7,10 @@ import re
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 from flask_api import FlaskAPI
-
+from flask.ext.cors import CORS
 app = FlaskAPI(__name__)
+
+CORS(app)
 
 
 
@@ -123,6 +125,7 @@ from flask import escape, request, jsonify
 def hello_http():
     text = ''
     if request.method == 'POST':
+        print (request)
         text = request.data['text']
 
     print ( classify(text) )
