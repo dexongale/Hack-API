@@ -3,8 +3,7 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "start": "nodemon ./bin/www",
-        "on": "concurrently \"nodemon ./bin/www\" \"python intent.py\""
+        "start": "concurrently \"nodemon ./bin/www\" \"python intent.py\""
     },
     "dependencies": {
         "cloudinary": "^1.13.2",

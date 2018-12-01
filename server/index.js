@@ -1,6 +1,8 @@
 var express = require("express");
-const formidable = require("express-formidable");
 var router = express.Router();
+const formidable = require("express-formidable");
+
+const transform = require("./utils");
 
 const cloudinary = require("cloudinary");
 cloudinary.config({
@@ -8,8 +10,6 @@ cloudinary.config({
     api_key: "234917719617762",
     api_secret: "FBrkoNhWu1Xc3CkjxKtVPOIBcUI"
 });
-
-const transform = require("../utils");
 
 router.get("/", function(req, res, next) {
     res.send("Dzifa");
@@ -28,9 +28,9 @@ router.post("/upload", formidable(), (req, res) => {
 });
 
 router.post("/transform", (req, res) => {
-    const { public_id, option } = req.body;
-    console.log({ public_id, option });
-    const url = transform(public_id, option, cloudinary);
+    const { public_id, command } = req.body;
+    // console.log({ public_id, option });
+    const url = transform(public_id, {command}, cloudinary);
     res.send(url);
 });
 
