@@ -99,9 +99,9 @@ def findFormat(text):
 def classify(text):
     import operator
     di = {
-        "bw": sim_bw(text),
-        "cvt": sim_cvt(text),
-        "tn": sim_tn(text)
+        "GRAYSCALE": sim_bw(text),
+        "CONVERT": sim_cvt(text),
+        "THUMBNAIL": sim_tn(text)
     }
 
     print (di)
