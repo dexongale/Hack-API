@@ -712,20 +712,23 @@ Website: http://emilcarlsson.se/
 
 			<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <div class="file-upload">
-  <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
-
-  <div class="image-upload-wrap">
-    <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
-    <div class="drag-text">
-      <h3>Drag and drop a file or select add Image</h3>
-    </div>
-  </div>
-  <div class="file-upload-content">
-    <img class="file-upload-image" src=""  id="imgUpload" alt="your image" />
-    <div class="image-title-wrap">
-      <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
-    </div>
-  </div>
+  <form action="" method="post" enctype="multipart/form-data" onsubmit="AJAXSubmit(this); return false;">
+    <fieldset>
+    
+      <input type="hidden" value="default" name="upload_preset">
+  
+      <p>
+        <label >Select your image:
+        <input type="file" name="file"></label>
+      </p>
+      
+      <p>
+        <input type="submit" value="Submit" />
+      </p>
+      <img id="uploaded">
+      <div id="results"></div>
+    </fieldset>
+  </form>
 </div>
 		</div>
 		
@@ -760,90 +763,5 @@ Website: http://emilcarlsson.se/
 
 <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
 
-<script type="text/javascript"> 
 
-function uploadImage(){
-
-var imageData = document.getElementById("imageUpload").src ;
-
-if(!imageData==""){
-
-$.ajax({
-    url: "/upload", // Url to which the request is send
-    type: "POST",             // Type of request to be send, called as method
-    data: imageData, // Data sent to server, a set of key/value pairs (i.e. form fields and values)
-    contentType: false,       // The content type used when sending data to the server.
-    cache: false,             // To unable request pages to be cached
-    processData:false,        // To send DOMDocument or non processed data file it is set to false
-    success: function(data)   // A function to be called if request succeeds
-    {
-        $('#loading').hide();
-        $("#message").html(data);
-    }
-});
-
-}
-
-}
-
-
-</script>
-
-<script >$(".messages").animate({ scrollTop: $(document).height() }, "fast");
-
-$("#profile-img").click(function() {
-	$("#status-options").toggleClass("active");
-});
-
-$(".expand-button").click(function() {
-  $("#profile").toggleClass("expanded");
-	$("#contacts").toggleClass("expanded");
-});
-
-$("#status-options ul li").click(function() {
-	$("#profile-img").removeClass();
-	$("#status-online").removeClass("active");
-	$("#status-away").removeClass("active");
-	$("#status-busy").removeClass("active");
-	$("#status-offline").removeClass("active");
-	$(this).addClass("active");
-	
-	if($("#status-online").hasClass("active")) {
-		$("#profile-img").addClass("online");
-	} else if ($("#status-away").hasClass("active")) {
-		$("#profile-img").addClass("away");
-	} else if ($("#status-busy").hasClass("active")) {
-		$("#profile-img").addClass("busy");
-	} else if ($("#status-offline").hasClass("active")) {
-		$("#profile-img").addClass("offline");
-	} else {
-		$("#profile-img").removeClass();
-	};
-	
-	$("#status-options").removeClass("active");
-});
-
-function newMessage() {
-	message = $(".message-input input").val();
-	if($.trim(message) == '') {
-		return false;
-	}
-	$('<li class="sent"><img src="user.png" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
-	$('.message-input input').val(null);
-	$('.contact.active .preview').html('<span>You: </span>' + message);
-	$(".messages").animate({ scrollTop: $(document).height() }, "fast");
-};
-
-$('.submit').click(function() {
-  newMessage();
-});
-
-$(window).on('keydown', function(e) {
-  if (e.which == 13) {
-    newMessage();
-    return false;
-  }
-});
-//# sourceURL=pen.js
-</script>
 </body></html>
