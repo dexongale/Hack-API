@@ -7,7 +7,7 @@ import re
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 from flask_api import FlaskAPI
-from flask.ext.cors import CORS
+from flask_cors import CORS
 app = FlaskAPI(__name__)
 
 CORS(app)
@@ -120,6 +120,10 @@ def classify(text):
 
 
 from flask import escape, request, jsonify
+
+@app.route('/', methods=['GET'])
+def index():
+    return "Intent"
 
 @app.route('/api', methods=['POST'])
 def hello_http():
