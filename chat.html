@@ -23,25 +23,35 @@
 </head>
 
 <body>
-	<div class="file-upload">
-		<form action="" method="post" enctype="multipart/form-data" onsubmit="AJAXSubmit(this); return false;">
-			<fieldset>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-header">Dzifa</div>
+                <div class="card-body">
+                    <form action="" method="post" enctype="multipart/form-data" onsubmit="AJAXSubmit(this); return false;">
+                        <input type="hidden" value="default" name="upload_preset">
+                        <p>
+                            <label>Select your image: </label>
+                            <input type="file" class="form-control-file border" name="file">
+                        </p>
+                        <p>
+                            <input type="submit" class="btn btn-success" value="Upload" />
+                        </p>
+                        <div id="uploaded"></div>
+                        <div id="results"></div>
+                    </form>
+                </div>
+            </div>
 
-				<input type="hidden" value="default" name="upload_preset">
 
-				<p>
-					<label>Select your image:
-						<input type="file" name="file"></label>
-				</p>
+        </div>
 
-				<p>
-					<input type="submit" value="Submit" />
-				</p>
-				<div id="uploaded"></div>
-				<div id="results"></div>
-			</fieldset>
-		</form>
-	</div>
+
+    </div>
+
 
 
 
@@ -49,8 +59,14 @@
 		<img src="">
 	</div>
 
-	<input type="text" name="input_text" id="message">
-	<input onclick="message()" type="button" name="send" value="send" id="send">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="message" name="input_text" id="message" >
+        <div class="input-group-append">
+            <button onclick="message()" type="button" name="send"  value="send" id="send" class="btn btn-success" type="submit">send</button>
+        </div>
+    </div>
+
+</div>
 
 <script type="text/javascript" src="hack.js"></script>
 </body>
