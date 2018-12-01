@@ -9,7 +9,7 @@ var data = "" ;
 window.ajaxSuccess = function () {
 	response = JSON.parse(this.responseText);
   console.log("ajaxSuccess", typeof this.responseText);
-  document.getElementById('uploaded').innerHTML = ( thumbnail(response["secure_url"]));
+  document.getElementById('uploaded').innerHTML = ( first_load(response["secure_url"]));
   // document.getElementById('results').innerText = this.responseText;
   image = response["public_id"];
 }
@@ -33,7 +33,7 @@ function toGreyscale(){
 
 function first_load(image){
 
-  var imageString = cl.imageTag(image, {height: "400", effect:"grayscale"}).toHtml();
+  var imageString = cl.imageTag(image, {width: "300", effect:"grayscale"}).toHtml();
   console.log(imageString);
   return imageString;
 
@@ -77,6 +77,9 @@ function doRequest(user_data, user_intent) {
     console.log(toSend);
     $.post("http://localhost:3000/transform",toSend)
     .done(function (res) {
-      console.log(res);
+      console.log(res.public_id);
+      console.log(res.url);
+      image = res.public_id;
+      document.getElementById('uploaded').innerHTML = ( first_load(res.url));
     });
   }
